@@ -3,6 +3,7 @@ package login;
 import org.junit.Test;
 import pages.HomePage;
 import utils.BaseTest;
+import utils.ConfigReader;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -11,7 +12,7 @@ public class LoginPageTest extends BaseTest {
 
     @Test
     public void testSuccessfulLogin() {
-        loginPage.login("Admin", "admin123");
+        loginPage.login(ConfigReader.getProperty("username"), ConfigReader.getProperty("password"));
         HomePage homePage = new HomePage(driver);
         assertEquals("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index", driver.getCurrentUrl());
         assertTrue("Login should be successful", homePage.isUserLoggedIn());

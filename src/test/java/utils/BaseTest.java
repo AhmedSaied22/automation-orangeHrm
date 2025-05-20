@@ -17,7 +17,7 @@
         public void setupDriver() {
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
-            driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+            driver.get(ConfigReader.getProperty("url"));
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
             driver.manage().window().maximize();
             loginPage = new LoginPage(driver);

@@ -3,14 +3,14 @@ package home;
 import org.junit.Test;
 import pages.HomePage;
 import utils.BaseTest;
+import utils.ConfigReader;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class HomePageTest extends BaseTest {
     private void performSuccessfulLogin() {
-        loginPage.login("Admin", "admin123");
-
+        loginPage.login(ConfigReader.getProperty("username"), ConfigReader.getProperty("password"));
         // تأكد من نجاح Login
         HomePage homePage = new HomePage(driver);
         assertTrue("Should be logged in", homePage.isUserLoggedIn());
